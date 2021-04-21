@@ -10,7 +10,9 @@ namespace Universidad.Infraestructura.Datos.UoW
 {
     public interface IUnitOfWork
     {
+        IRepositorioGenerico<Persona> PersonaRepositorio { get; }
         IRepositorioGenerico<Profesor> ProfesorRepositorio { get; }
+        IRepositorioGenerico<Sexo> SexoRepositorio { get; }
         void Save();
     }
 }

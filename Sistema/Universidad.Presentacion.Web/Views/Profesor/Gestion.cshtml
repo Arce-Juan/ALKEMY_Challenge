@@ -1,0 +1,85 @@
+﻿@using Universidad.Presentacion.Web.ViewModels.ProfesorVM
+@model GestionViewModel
+
+@{
+    ViewBag.Title = "Gestion Profesor";
+    Layout = "~/Views/Shared/_PrincipalSitie.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+
+        <h3>@Model.TipoGestion Profesor</h3>
+
+        @using (Html.BeginForm("Gestion", "Profesor", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.TxtDni, new { @class = "col-md-2 control-label" })
+                @if (Model.TipoGestion == "Modificar")
+                { @Html.TextBoxFor(m => m.TxtDni, new { @class = "form-control", @placeholder = ".....", @readonly = "@readonly" }) }
+                else
+                { @Html.TextBoxFor(m => m.TxtDni, new { @type = "number", @min = "0", @step = "1", @class = "form-control", @placeholder = "....." }) }
+                @Html.ValidationMessageFor(m => m.TxtDni, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.TxtApellido, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.TxtApellido, new { @class = "form-control", @placeholder = "....." })
+                @Html.ValidationMessageFor(m => m.TxtApellido, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.TxtNombre, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.TxtNombre, new { @class = "form-control", @placeholder = "....." })
+                @Html.ValidationMessageFor(m => m.TxtNombre, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.TxtNacimiento, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.TxtNacimiento, new { type = "date", @class = "form-control", @placeholder = "....." })
+                @Html.ValidationMessageFor(m => m.TxtNacimiento, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.TxtSexo, new { @class = "col-md-2 control-label" })
+                @Html.DropDownListFor(model => model.TxtSexo, Model.Sexos, new { @class = "form-control", })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.TxtActivo, new { @class = "col-md-2 control-label" })
+                @if (Model.TipoGestion == "Nuevo")
+                {@Html.DropDownListFor(model => model.TxtActivo, Model.Activos, new { @class = "form-control", @disabled = "disabled" }) }
+                else
+                { @Html.DropDownListFor(model => model.TxtActivo, Model.Activos, new { @class = "form-control", }) }
+                @Html.ValidationMessageFor(m => m.TxtActivo, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" name="nHiddenTipoGestion" value="@Model.TipoGestion">
+                <input type="hidden" name="nHiddenId" value="@Model.Profesor.Id">
+                <button class="btn btn-primary" type="submit" onclick="return Validaciones();">@Model.TipoGestion Profesor</button>
+                <a class="btn btn-secondary" href="/Profesor/Index">Cancelar</a>
+            </div>
+
+                    }
+    </div>
+</div>
+
+<script type="text/javascript">
+    @{
+        string activo = Model.Profesor.Activo == true ? "SI" : "NO";
+        string idSexo = Model.TxtSexo == null ? "1" : Model.TxtSexo;
+    }
+    $("#TxtActivo").val("@activo");
+    $("#TxtSexo").val("@idSexo");
+
+    var Validaciones = function () {
+        $("#TxtActivo").removeAttr('disabled');
+        return true;
+    }
+</script>

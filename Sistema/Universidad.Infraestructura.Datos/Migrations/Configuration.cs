@@ -148,7 +148,7 @@
                     Legajo = 1003,
                     Persona = new Persona()
                     {
-                        Dni = 33444555,
+                        Dni = 33222333,
                         Apellido = "ARCE",
                         Nombre = "JOSE",
                         FechaNacimiento = new DateTime(1986, 03, 02),
@@ -170,7 +170,7 @@
                     Legajo = 1004,
                     Persona = new Persona()
                     {
-                        Dni = 33222111,
+                        Dni = 33222444,
                         Apellido = "ARCE",
                         Nombre = "LORENA",
                         FechaNacimiento = new DateTime(1987, 04, 15),
@@ -234,7 +234,7 @@
                     Activo = true,
                     Persona = new Persona()
                     {
-                        Dni = 22333444,
+                        Dni = 22333111,
                         Apellido = "Vicente",
                         Nombre = "Fernando",
                         FechaNacimiento = new DateTime(1980, 05, 05),
@@ -249,7 +249,7 @@
                     Activo = true,
                     Persona = new Persona()
                     {
-                        Dni = 22333444,
+                        Dni = 22333222,
                         Apellido = "Araujo",
                         Nombre = "Carlos",
                         FechaNacimiento = new DateTime(1970, 06, 06),
@@ -279,7 +279,7 @@
                     Activo = false,
                     Persona = new Persona()
                     {
-                        Dni = 22333444,
+                        Dni = 22333555,
                         Apellido = "Mansilla",
                         Nombre = "Carolina",
                         FechaNacimiento = new DateTime(1987, 08, 08),

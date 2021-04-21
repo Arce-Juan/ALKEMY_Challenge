@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace Universidad.Infraestructura.Datos.Repositorios
 
         public void Update(TEntity entity)
         {
-            dbContext.Set<TEntity>().Add(entity);
+            dbContext.Entry(entity).State = EntityState.Modified;
         }
 
         public void Delete(long id)

@@ -12,6 +12,8 @@ namespace Universidad.Infraestructura.Datos.Servicios.Profesores
         void AgragarProfesor(Profesor profesor);
         void ModificarProfesor(Profesor profesor);
         void EliminarProfesor(int id);
+        Profesor ObtenerPorId(int id);
+        IEnumerable<Profesor> ObtenerTodos();
         IEnumerable<Profesor> ObtenerProfesoresActivos(bool activo);
     }
 }

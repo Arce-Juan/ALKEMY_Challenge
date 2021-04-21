@@ -32,7 +32,9 @@ namespace Universidad.Infraestructura.Datos.Servicios.Profesores
 
         public void ModificarProfesor(Profesor profesor)
         {
-            _unitOfWork.ProfesorRepositorio.Create(profesor);
+            _unitOfWork.PersonaRepositorio.Update(profesor.Persona);
+            var persoa = _unitOfWork.ProfesorRepositorio.Get(profesor.Persona.Id);
+            _unitOfWork.ProfesorRepositorio.Update(profesor);
             _unitOfWork.Save();
         }
 
@@ -42,10 +44,21 @@ namespace Universidad.Infraestructura.Datos.Servicios.Profesores
             _unitOfWork.Save();
         }
 
+        public Profesor ObtenerPorId(int id)
+        {
+            return _unitOfWork.ProfesorRepositorio.Get(id);
+        }
+
+        public IEnumerable<Profesor> ObtenerTodos()
+        {
+            return _unitOfWork.ProfesorRepositorio.GetAll();
+        }
+
         public IEnumerable<Profesor> ObtenerProfesoresActivos(bool activo)
         {
             return _profesorRepositorio.ObtenerProfesoresActivos(activo);
         }
 
+       
     }
 }

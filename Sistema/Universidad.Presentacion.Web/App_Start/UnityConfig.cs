@@ -4,8 +4,10 @@ using Unity;
 using Unity.AspNet.Mvc;
 using Universidad.Infraestructura.Datos.Contexto;
 using Universidad.Infraestructura.Datos.Repositorios;
-using Universidad.Infraestructura.Datos.Servicios.Profesores;
 using Universidad.Infraestructura.Datos.UoW;
+using Universidad.Infraestructura.Datos.Servicios.Profesores;
+using Universidad.Infraestructura.Datos.Servicios.Sexos;
+using Universidad.Infraestructura.Datos.Servicios.Personas;
 
 namespace Universidad.Presentacion.Web
 {
@@ -48,9 +50,16 @@ namespace Universidad.Presentacion.Web
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IUniversidadContexto, UniversidadContexto>();
-            container.RegisterType<IProfesorRepositorio, ProfesorRepositorio>();
             container.RegisterType<IUnitOfWork, UnitOfWork>();
-            container.RegisterType<IProfesorServicio, ProfesorServicio>();
+
+            container.RegisterType<IProfesorRepositorio, ProfesorRepositorio>();
+            //container.RegisterType<IProfesorServicio, ProfesorServicio>();
+
+            container.RegisterType<ISexoRepositorio, SexoRepositorio>();
+            //container.RegisterType<ISexoServicio, SexoServicio>();
+
+            container.RegisterType<IPersonaRepositorio, PersonaRepositorio>();
+            //container.RegisterType<IPersonaServicio, PersonaServicio>();
         }
 
         public static void RegisterDependencies()

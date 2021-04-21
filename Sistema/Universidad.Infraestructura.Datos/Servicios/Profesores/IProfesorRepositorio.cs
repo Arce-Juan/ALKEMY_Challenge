@@ -10,5 +10,6 @@ namespace Universidad.Infraestructura.Datos.Servicios.Profesores
     public interface IProfesorRepositorio
     {
         IEnumerable<Profesor> ObtenerProfesoresActivos(bool activo);
+        //void ActualizarDatos(Profesor _profesor);
     }
 }

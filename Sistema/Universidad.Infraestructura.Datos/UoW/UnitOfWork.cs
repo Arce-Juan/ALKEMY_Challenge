@@ -13,6 +13,8 @@ namespace Universidad.Infraestructura.Datos.UoW
     {
         private UniversidadContexto _context;
         private IRepositorioGenerico<Profesor> _profesorRepositorio;
+        private IRepositorioGenerico<Persona> _personaRepositorio;
+        private IRepositorioGenerico<Sexo> _sexoRepositorio;
 
         public UnitOfWork(UniversidadContexto context)
         {
@@ -24,6 +26,22 @@ namespace Universidad.Infraestructura.Datos.UoW
             get
             {
                 return _profesorRepositorio = _profesorRepositorio ?? new RepositorioGenerico<Profesor>(_context);
+            }
+        }
+
+        public IRepositorioGenerico<Persona> PersonaRepositorio
+        {
+            get
+            {
+                return _personaRepositorio = _personaRepositorio ?? new RepositorioGenerico<Persona>(_context);
+            }
+        }
+
+        public IRepositorioGenerico<Sexo> SexoRepositorio
+        {
+            get
+            {
+                return _sexoRepositorio = _sexoRepositorio ?? new RepositorioGenerico<Sexo>(_context);
             }
         }
 

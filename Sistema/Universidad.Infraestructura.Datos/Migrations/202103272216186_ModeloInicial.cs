@@ -30,10 +30,10 @@
                         Apellido = c.String(nullable: false),
                         Nombre = c.String(nullable: false),
                         FechaNacimiento = c.DateTime(nullable: false),
-                        Sexo_Id = c.Int(),
+                        Sexo_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Sex", t => t.Sexo_Id)
+                .ForeignKey("dbo.Sex", t => t.Sexo_Id, cascadeDelete: true)
                 .Index(t => t.Sexo_Id);
             
             CreateTable(
@@ -211,10 +211,10 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Activo = c.Boolean(nullable: false),
-                        Persona_Id = c.Int(),
+                        Persona_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Person", t => t.Persona_Id)
+                .ForeignKey("dbo.Person", t => t.Persona_Id, cascadeDelete: true)
                 .Index(t => t.Persona_Id);
             
         }

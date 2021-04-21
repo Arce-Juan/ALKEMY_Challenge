@@ -1,0 +1,64 @@
+﻿@using Universidad.Presentacion.Web.ViewModels.ProfesorVM
+@model IndexViewModel
+
+@{
+    ViewBag.Title = "Profesores";
+    Layout = "~/Views/Shared/_PrincipalSitie.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h3>Listado de Profesores</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="form-group">
+            <a href="/Profesor/Gestion/?id=0&tipoGestion=Nuevo"><button class="btn btn-success">Nuevo Profesor</button></a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-condensed table-hover">
+                <thead>
+                    <th scope="col">Dni</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Nacimiento</th>
+                    <th scope="col">Sexo</th>
+                    <th scope="col">Activo?</th>
+                    <th scope="col">Acciones</th>
+                </thead>
+
+                <tbody>
+                @{
+                    foreach (var profesor in Model.Profesores)
+                    {
+                        <tr>
+                            <td>@profesor.Persona.Dni</td>
+                            <td>@profesor.Persona.Apellido, @profesor.Persona.Nombre</td>
+                            <td>@profesor.Persona.FechaNacimiento.ToString("dd/MM/yyyy")</td>
+                            <td>@profesor.Persona.Sexo.Descripcion</td>
+                            @{string estado = profesor.Activo == true ? "SI" : "NO";}
+                            <td>@estado</td>
+                            <td>
+                                <a class="btn btn-info" href="/Profesor/Gestion/?id=@profesor.Id&tipoGestion=Modificar" role="button" title="Editar">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    
+</script>
+
